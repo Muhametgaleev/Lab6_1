@@ -24,14 +24,15 @@ public class Client {
             try {
                 System.out.println("Введите команду");
                 String[] s = reader.readNextLine().split(" ");
-//                for(int i=0; i<s.length; i++)System.out.println(s[i]);
-                if(s.length==2) supply.setPeremen(s[1]);
-
-                Command commandd=command.getCommand(s[0]);
-                commandd.declare(supply);
-                supply.setPeremen("");
-                if(!s[0].equals("execute_script")) packetsSender.send(clientSocket, commandd);
-
+                if (s.length < 3) {
+                    if (s.length == 2) supply.setPeremen(s[1]);
+                    Command commandd = command.getCommand(s[0]);
+                    commandd.declare(supply);
+                    supply.setPeremen("");
+                    if (!s[0].equals("execute_script")) packetsSender.send(clientSocket, commandd);
+                }else{
+                    System.out.println("Лишние данные");
+                }
             }catch (NullPointerException e){
                 System.out.println("такой команды не существует");
             }

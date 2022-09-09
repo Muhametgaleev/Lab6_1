@@ -25,7 +25,7 @@ public class CommandManager {
         commandColl.put("save",new SaveCommand());
         commandColl.put("show",new ShowCommand());
         commandColl.put("print_unique_fuel_consumption",new UniqueFuelConsumption());
-        commandColl.put("updateId",new UpdateCommand());
+        commandColl.put("update",new UpdateCommand());
     }
     public Command getCommand(String s){
         return commandColl.get(s);

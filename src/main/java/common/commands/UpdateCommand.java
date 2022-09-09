@@ -8,10 +8,11 @@ import common.classes.Vehicle;
 import common.scanner.MyScanner;
 import common.supplier.Supply;
 
+import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 
-public class UpdateCommand extends AddParent implements Command{
+public class UpdateCommand extends AddParent implements Command, Serializable {
     ArrayList<Vehicle> list;
     Integer id;
     String name;
@@ -23,9 +24,8 @@ public class UpdateCommand extends AddParent implements Command{
 
     @Override
     public void execute(Supply s) {
-        try {
+//        try {
             list=s.getCopy();
-            int id=Integer.parseInt(s.getPeremen());
             list.removeIf(vehicle -> vehicle.getId().equals(id));
             list.add(new Vehicle(id, name, coordinates, creationDate, enginePower, capacity, type));
 //            System.out.println("Элемент добавлен");
@@ -34,14 +34,21 @@ public class UpdateCommand extends AddParent implements Command{
             ServerSender serverSender = new ServerSender();
             serverSender.send(serverAnswer);
 
-        }
-        catch (NumberFormatException e){execute(s);}
+//        }
+//        catch (NumberFormatException e){
+//            ServerAnswer serverAnswer = new ServerAnswer("Неправильно введенная команда");
+//            ServerSender serverSender = new ServerSender();
+//            serverSender.send(serverAnswer);
+//        }
     }
 
     public void declare(Supply s){
         MyScanner scanner = new MyScanner();
-
+            System.out.println("Если элемент не будет найден, то он автоматически добавится в колекцию.");
             id=Integer.parseInt(s.getPeremen());
+            if(id<=0){
+                id=analizeInteger(scanner, "id");
+            }
             System.out.println("Введите имя");
             name = scanner.readNextLine();
 

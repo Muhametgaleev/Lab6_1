@@ -6,11 +6,12 @@ import common.classes.FuelType;
 import common.classes.Vehicle;
 import common.supplier.Supply;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashSet;
 
 
-public class UniqueFuelConsumption implements Command {
+public class UniqueFuelConsumption implements Command, Serializable {
     String peremen;
     String answer = null;
 

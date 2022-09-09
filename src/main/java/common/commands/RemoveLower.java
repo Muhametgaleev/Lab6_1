@@ -7,9 +7,10 @@ import common.classes.Vehicle;
 import common.scanner.MyScanner;
 import common.supplier.Supply;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class RemoveLower extends AddParent implements Command {
+public class RemoveLower extends AddParent implements Command, Serializable {
     Integer capacity;
     String peremen;
 

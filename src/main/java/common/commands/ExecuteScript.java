@@ -23,12 +23,12 @@ public class ExecuteScript implements Command {
                         if (s.length == 2) {
                             supply.setPeremen(s[1]);
                             if (!Objects.equals(s[0], "execute_script") & !Objects.equals(s[1], nameFile)) {
-                                command.getCommand(s[0]).execute(supply);
-                                supply.setHistory(s[0]);
+                                command.getCommand(s[0]).declare(supply);
+//                                supply.setHistory(s[0]);
                             }
                         } else {
-                            command.getCommand(s[0]).execute(supply);
-                            supply.setHistory(s[0]);
+                            command.getCommand(s[0]).declare(supply);
+//                            supply.setHistory(s[0]);
                         }
                     } catch (NullPointerException e) {
 

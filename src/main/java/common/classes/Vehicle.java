@@ -1,8 +1,9 @@
 package common.classes;
 
+import java.io.Serializable;
 import java.time.LocalDateTime;
 
-public class Vehicle {
+public class Vehicle implements Serializable {
     private Integer id;
     private String name;
     private Coordinates coordinates; //Поле не может быть null

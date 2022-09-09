@@ -1,15 +1,19 @@
 package common.commands;
 
+import Server.tools.ServerAnswer;
+import Server.tools.ServerSender;
 import common.classes.Vehicle;
 import common.supplier.Supply;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class RemoveAllByEnginePower implements Command{
+public class RemoveAllByEnginePower implements Command, Serializable {
     Integer enginePower;
 
     @Override
     public void execute(Supply s) {
+        String answer = null;
         try{
             ArrayList<Vehicle> list=s.getCopy();
             ArrayList<Vehicle> listZnach=new ArrayList<>();
@@ -20,10 +24,14 @@ public class RemoveAllByEnginePower implements Command{
                 list.remove(znach);
             }
             s.setCopy(list);
-            System.out.println("Команда выполнена");
+            answer="Команда выполнена";
         }
         catch (NumberFormatException e){
-            System.out.println("К сожалению, данные введены неправильно");
+            answer="К сожалению, данные введены неправильно";
+        }finally {
+            ServerAnswer serverAnswer = new ServerAnswer(answer);
+            ServerSender serverSender = new ServerSender();
+            serverSender.send(serverAnswer);
         }
     }
 

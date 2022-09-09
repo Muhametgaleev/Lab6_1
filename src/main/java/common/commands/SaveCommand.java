@@ -1,17 +1,21 @@
 package common.commands;
 
+import Server.tools.ServerAnswer;
+import Server.tools.ServerSender;
 import common.classes.Vehicle;
 import common.supplier.Supply;
 
 import java.io.FileWriter;
 import java.io.IOException;
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class SaveCommand implements Command {
+public class SaveCommand implements Command, Serializable {
     String peremen;
 
     @Override
     public void execute(Supply s) {
+        String answer;
         if (peremen.equals("")) {
             try {
                 ArrayList<Vehicle> list = s.getCopy();
@@ -34,8 +38,6 @@ public class SaveCommand implements Command {
                     } else {
                         type = String.valueOf(vehicle.getFuelType());
                     }
-
-
                     writer1.write("                <player id=\"" + id + "\" name=\"" + vehicle.getName() + "\" coordinateX=\"" + X + "\" coordinateY=\"" + Y + "\" enginePower=\"" + engine + "\" capacity=\"" + cap + "\" FuelType=\"" + type + "\"/>\n");
                 }
                 writer1.write("            </employees>\n" +
@@ -43,11 +45,15 @@ public class SaveCommand implements Command {
                         "    </offices>\n" +
                         "</company>");
                 writer1.close();
-                System.out.println("Команда выполнена");
+                answer="Команда выполнена";
             } catch (IOException e) {
-                System.out.println("Нет файла для сохранения информации");
+                answer="Нет файла для сохранения информации";
             }
-        } else System.out.println("Команда введена некорректно");
+        } else answer="Команда введена некорректно";
+
+        ServerAnswer serverAnswer = new ServerAnswer(answer);
+        ServerSender serverSender = new ServerSender();
+        serverSender.send(serverAnswer);
     }
 
     @Override

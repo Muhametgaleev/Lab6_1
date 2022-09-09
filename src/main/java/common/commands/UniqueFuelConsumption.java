@@ -1,5 +1,7 @@
 package common.commands;
 
+import Server.tools.ServerAnswer;
+import Server.tools.ServerSender;
 import common.classes.FuelType;
 import common.classes.Vehicle;
 import common.supplier.Supply;
@@ -10,6 +12,7 @@ import java.util.HashSet;
 
 public class UniqueFuelConsumption implements Command {
     String peremen;
+    String answer = null;
 
     @Override
     public void execute(Supply s) {
@@ -21,8 +24,12 @@ public class UniqueFuelConsumption implements Command {
             }
             for (FuelType unique_fuel : listForFuel) {
                 System.out.println(unique_fuel);
+                answer+=String.valueOf(unique_fuel) + "\n";
             }
-        } else System.out.println("Команда введена некорректно");
+        } else answer="Команда введена некорректно";
+        ServerAnswer serverAnswer = new ServerAnswer(answer);
+        ServerSender serverSender = new ServerSender();
+        serverSender.send(serverAnswer);
     }
 
     @Override

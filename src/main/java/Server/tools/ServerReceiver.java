@@ -13,6 +13,8 @@ import java.net.DatagramPacket;
 import java.net.DatagramSocket;
 
 public class ServerReceiver {
+    SaxPars saxPars=new SaxPars();
+    Supply supply=new Supply(saxPars);
     @Getter
     private static DatagramPacket datagramPacket;
 
@@ -28,8 +30,6 @@ public class ServerReceiver {
     }
 
     public void receive(DatagramSocket serverSocket) throws IOException {
-        SaxPars saxPars=new SaxPars();
-        Supply supply=new Supply(saxPars);
         byte[] receiveData = new byte[8096];
 
         DatagramPacket receivePacket = new DatagramPacket(receiveData, receiveData.length);

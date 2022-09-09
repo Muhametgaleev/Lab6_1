@@ -1,6 +1,8 @@
 package common.classes;
 
-public class Coordinates {
+import java.io.Serializable;
+
+public class Coordinates implements Serializable {
     public Coordinates(Float x, Long y){
         this.x=x;
         this.y=y;

@@ -19,9 +19,11 @@ public class Client {
         ClientSender packetsSender = new ClientSender();
         CommandManager command=new CommandManager();
         Supply supply=new Supply();
+//        System.out.println("hwthhwth");
 
-        while (true){
+        while (supply.getRunning()){
             try {
+                System.out.println("hwthhwth");
                 String[] s = reader.readNextLine().split(" ");
                 if(s.length==2) supply.setPeremen(s[1]);
 

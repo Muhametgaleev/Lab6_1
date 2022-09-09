@@ -18,13 +18,14 @@ public class Server {
 //        loader.load();
 //        CollectionManager collectionManager = new CollectionManager(loader);
 //        CommandManager commandManager = new CommandManager(collectionManager);
-        SaxPars saxPars=new SaxPars();
-        Supply supply=new Supply(saxPars);
-        CommandManager command=new CommandManager();
 
+//        SaxPars saxPars=new SaxPars();
+//        Supply supply=new Supply(saxPars);
+//        CommandManager command=new CommandManager();
+        ServerReceiver receiver = new ServerReceiver();
         DatagramSocket serverSocket = new DatagramSocket(SERVER_PORT);
+
         while(true) {
-            ServerReceiver receiver = new ServerReceiver();
             receiver.receive(serverSocket);
         }
     }

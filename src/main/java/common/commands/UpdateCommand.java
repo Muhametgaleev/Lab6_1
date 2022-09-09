@@ -1,5 +1,7 @@
 package common.commands;
 
+import Server.tools.ServerAnswer;
+import Server.tools.ServerSender;
 import common.classes.Coordinates;
 import common.classes.FuelType;
 import common.classes.Vehicle;
@@ -25,19 +27,12 @@ public class UpdateCommand extends AddParent implements Command{
             list=s.getCopy();
             int id=Integer.parseInt(s.getPeremen());
             list.removeIf(vehicle -> vehicle.getId().equals(id));
-
-            MyScanner scanner=new MyScanner();
-            System.out.println("Введите имя");
-            String name= scanner.readNextLine();
-            Coordinates coordinates=new Coordinates(analizeFloat(scanner,"cordx"), analizeLong(scanner,"cordy"));
-            Integer  capacity= analizeInteger(scanner, "capacity");
-            Integer  enginePower= analizeInteger(scanner, "Engine Power");
-            LocalDateTime creationDate = LocalDateTime.now();
-            FuelType type=analizeFuel(scanner, "FuelType");
-
             list.add(new Vehicle(id, name, coordinates, creationDate, enginePower, capacity, type));
-            System.out.println("Элемент добавлен");
+//            System.out.println("Элемент добавлен");
             s.setCopy(list);
+            ServerAnswer serverAnswer = new ServerAnswer("Элемент добавлен");
+            ServerSender serverSender = new ServerSender();
+            serverSender.send(serverAnswer);
 
         }
         catch (NumberFormatException e){execute(s);}

@@ -22,7 +22,7 @@ public class ClientReceiver {
         }
         try(ObjectInputStream ois = new ObjectInputStream(new ByteArrayInputStream(receiveArray))){
             ServerAnswer serverAnswer = (ServerAnswer) ois.readObject();
-//            System.out.println(serverAnswer.getMessage());
+            System.out.println(serverAnswer.getMessage());
         }
         catch (Exception e) {
             //e.printStackTrace();

@@ -1,19 +1,26 @@
 package common.commands;
 
+import Server.tools.ServerAnswer;
+import Server.tools.ServerSender;
 import common.supplier.Supply;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class HistoryCommand implements Command {
+public class HistoryCommand implements Command, Serializable {
     String peremen;
     ArrayList<String> list;
 
     @Override
     public void execute(Supply s) {
+        String answer="";
         if (peremen.equals("")) {
              ArrayList<String> list = s.getHistory();
-            for (String history : list) System.out.println(history);
-        } else System.out.println("Команда введена некорректно");
+            for (String history : list) answer+=history+"\n";
+        } else answer="Команда введена некорректно";
+        ServerAnswer serverAnswer = new ServerAnswer(answer);
+        ServerSender serverSender = new ServerSender();
+        serverSender.send(serverAnswer);
     }
 
     @Override

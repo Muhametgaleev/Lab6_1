@@ -6,10 +6,11 @@ import common.classes.Vehicle;
 import common.scanner.MyScanner;
 import common.supplier.Supply;
 
+import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 
-public class AddIfMax extends AddParent implements Command {
+public class AddIfMax extends AddParent implements Command, Serializable {
     ArrayList<Vehicle> list;
     int maxEllement = 0;
     Integer id;

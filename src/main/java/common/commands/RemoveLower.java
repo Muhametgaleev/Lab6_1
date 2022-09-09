@@ -1,6 +1,8 @@
 package common.commands;
 
 
+import Server.tools.ServerAnswer;
+import Server.tools.ServerSender;
 import common.classes.Vehicle;
 import common.scanner.MyScanner;
 import common.supplier.Supply;
@@ -13,6 +15,7 @@ public class RemoveLower extends AddParent implements Command {
 
     @Override
     public void execute(Supply s) {
+        String answer;
         if (peremen.equals("")) {
             ArrayList<Vehicle> list = s.getCopy();
             ArrayList<Vehicle> listZnach = new ArrayList<>();
@@ -27,8 +30,12 @@ public class RemoveLower extends AddParent implements Command {
                 list.remove(znach);
             }
             s.setCopy(list);
-            System.out.println("Команда выполнена");
-        } else System.out.println("Команда введена некорректно");
+            answer="Команда выполнена";
+        } else answer="Команда введена некорректно";
+
+        ServerAnswer serverAnswer = new ServerAnswer(answer);
+        ServerSender serverSender = new ServerSender();
+        serverSender.send(serverAnswer);
     }
 
     @Override

@@ -1,5 +1,7 @@
 package common.commands;
 
+import Server.tools.ServerAnswer;
+import Server.tools.ServerSender;
 import common.classes.Coordinates;
 import common.classes.FuelType;
 import common.classes.Vehicle;
@@ -7,10 +9,11 @@ import common.classes.Vehicle;
 import common.scanner.MyScanner;
 import common.supplier.*;
 
+import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 
-public class AddCommand extends AddParent implements Command {
+public class AddCommand extends AddParent implements Command, Serializable {
     ArrayList<Vehicle> list;
 
     Integer id;
@@ -26,7 +29,8 @@ public class AddCommand extends AddParent implements Command {
     public void execute(Supply s) {
         if(peremen.equals("")) {
             list = s.getCopy();
-
+            String answer = null;
+            id = this.findMaxIdFile() + 1;
 
             // MyScanner scanner = new MyScanner();
 
@@ -44,22 +48,30 @@ public class AddCommand extends AddParent implements Command {
             // FuelType type = analizeFuel(scanner, "FuelType");
             try{
                 list.add(new Vehicle(id, name, coordinates, creationDate, enginePower, capacity, type));
-                System.out.println("Элемент успешно добавлен");
+                answer="Элемент успешно добавлен";
                 s.setCopy(list);
             }catch(Exception e){
-                System.out.println("Что-то пошло не так");
+                answer="Что-то пошло не так";
+            }finally {
+                ServerAnswer serverAnswer = new ServerAnswer(answer);
+                ServerSender serverSender = new ServerSender();
+                serverSender.send(serverAnswer);
             }
 
         }
-        else System.out.println("Команда введена некорректно");
+        else {
+//            System.out.println("Команда введена некорректно");
+            ServerAnswer serverAnswer = new ServerAnswer("Команда введена некорректно");
+            ServerSender serverSender = new ServerSender();
+            serverSender.send(serverAnswer);
+        }
+
 
     }
 
     @Override
     public void declare(Supply s){
         MyScanner scanner = new MyScanner();
-
-            id = this.findMaxIdFile() + 1;
             System.out.println("Введите имя");
             name = scanner.readNextLine();
 

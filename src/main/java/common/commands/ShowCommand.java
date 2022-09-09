@@ -1,22 +1,34 @@
 package common.commands;
 
+import Server.tools.ServerAnswer;
+import Server.tools.ServerSender;
 import common.classes.Vehicle;
 import common.supplier.Supply;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class ShowCommand implements Command {
+public class ShowCommand implements Command, Serializable {
     ArrayList<Vehicle> list;
     String peremen;
+    String answer="";
 
     @Override
     public void execute(Supply s) {
         if (peremen.equals("")) {
             list = s.getCopy();
             for (Vehicle vehicle : list) {
-                System.out.println(vehicle.getName() + " " + vehicle.getId() + " " + vehicle.getCapacity() + " " + vehicle.getEnginePower() + " " + vehicle.getCoordinateX() + " " + vehicle.getCoordinateY() + " " + vehicle.getCreationDate());
+                answer+=vehicle.getName() + " " + vehicle.getId() + " " + vehicle.getCapacity() + " " + vehicle.getEnginePower() + " " + vehicle.getCoordinateX() + " " + vehicle.getCoordinateY() + " " + vehicle.getCreationDate() + "\n";
             }
-        } else System.out.println("Команда введена некорректно");
+            System.out.println(answer);
+            ServerAnswer serverAnswer = new ServerAnswer(answer);
+            ServerSender serverSender = new ServerSender();
+            serverSender.send(serverAnswer);
+        } else {
+            ServerAnswer serverAnswer = new ServerAnswer("Команда введена некорректно");
+            ServerSender serverSender = new ServerSender();
+            serverSender.send(serverAnswer);
+        };
     }
 
     @Override

@@ -1,18 +1,21 @@
 package common.commands;
 
+import Server.tools.ServerAnswer;
+import Server.tools.ServerSender;
 import common.classes.Vehicle;
 import common.supplier.Supply;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 
-public class RemoveById implements Command {
+public class RemoveById implements Command, Serializable {
     ArrayList<Vehicle> list;
     int id;
 
     @Override
     public void execute(Supply s) {
-        try {
+
             // id = Integer.parseInt(s.getPeremen());
             list = s.getCopy();
             for (Vehicle vehicle : list) {
@@ -21,10 +24,11 @@ public class RemoveById implements Command {
                 }
             }
             s.setCopy(list);
-            System.out.println("Команда выполнена");
-        } catch (NumberFormatException e) {
-            execute(s);
-        }
+//            System.out.println("Команда выполнена");
+            ServerAnswer serverAnswer = new ServerAnswer("Команда выполнена");
+            ServerSender serverSender = new ServerSender();
+            serverSender.send(serverAnswer);
+
     }
 
     @Override
@@ -32,7 +36,7 @@ public class RemoveById implements Command {
         try{
             id = Integer.parseInt(s.getPeremen());
         }catch (NumberFormatException e){
-            declare(s);
+            System.out.println("Возникла ошибка");
         }
     }
 

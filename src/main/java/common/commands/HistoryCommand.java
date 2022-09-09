@@ -30,7 +30,7 @@ public class HistoryCommand implements Command, Serializable {
     }
 
     public String getName() {
-        return "add if max";
+        return "history";
     }
 
 }

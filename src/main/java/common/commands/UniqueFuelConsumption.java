@@ -37,7 +37,7 @@ public class UniqueFuelConsumption implements Command {
         peremen=s.getPeremen();
     }
     public String getName() {
-        return "unique";
+        return "unique fuel consumption";
     }
 
 }

@@ -23,10 +23,10 @@ public class MyScanner {
         read = new Scanner(System.in);
     }
     public MyScanner(String nameOfFile) throws FileNotFoundException {
-
         InputStream myFile = getFileFromResourceAsStream(nameOfFile);
         read= new Scanner(myFile);
     }
+
     public String readNextLine(){
         try {
             return read.nextLine();

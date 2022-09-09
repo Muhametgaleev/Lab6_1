@@ -24,6 +24,7 @@ public class RemoveById implements Command, Serializable {
                 }
             }
             s.setCopy(list);
+            s.setPeremen("");
 //            System.out.println("Команда выполнена");
             ServerAnswer serverAnswer = new ServerAnswer("Команда выполнена");
             ServerSender serverSender = new ServerSender();
@@ -35,13 +36,14 @@ public class RemoveById implements Command, Serializable {
     public void declare(Supply s){
         try{
             id = Integer.parseInt(s.getPeremen());
+
         }catch (NumberFormatException e){
             System.out.println("Возникла ошибка");
         }
     }
 
     public String getName() {
-        return "remove";
+        return "remove by id";
     }
 
 }

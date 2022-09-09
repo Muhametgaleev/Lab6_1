@@ -41,7 +41,7 @@ public class RemoveAllByEnginePower implements Command, Serializable {
     }
 
     public String getName() {
-        return "remove by";
+        return "remove all by power";
     }
 
 }

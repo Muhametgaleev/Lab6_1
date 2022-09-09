@@ -41,6 +41,7 @@ public class ServerReceiver {
             System.out.println("Command "+ command.getName()+" received.");
             command.execute(supply);
             supply.setHistory(command.getName());
+            supply.setPeremen("");
         } catch (Exception e) {
             e.printStackTrace();
         }

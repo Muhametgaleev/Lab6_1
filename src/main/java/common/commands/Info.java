@@ -12,7 +12,7 @@ public class Info implements Command, Serializable {
 
     @Override
     public void execute(Supply s) {
-        if (s.getPeremen().equals(""))
+        if (peremen.equals(""))
             answer="Количество элементов в коллекции на данный момент " + s.getSize() + " Остальные данные " + s.toString() + " " + s.hashCode();
         else answer="Команда введена некорректно";
         ServerAnswer serverAnswer = new ServerAnswer(answer);

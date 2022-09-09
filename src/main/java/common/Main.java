@@ -6,6 +6,8 @@ import common.scanner.MyScanner;
 import common.supplier.Supply;
 import common.commands.*;
 
+import java.net.SocketException;
+
 public class Main {
     public static  void main(String[] args) {
         MyScanner myScanner=new MyScanner();
@@ -23,6 +25,8 @@ public class Main {
             catch (NullPointerException e){
 
                 System.out.println("такой команды не существует");
+            } catch (SocketException e){
+
             }
             supply.setPeremen("");
         }

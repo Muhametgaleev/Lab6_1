@@ -29,8 +29,7 @@ public class Client {
 
                 Command commandd=command.getCommand(s[0]);
                 commandd.declare(supply);
-                packetsSender.send(clientSocket, commandd);
-
+                if(!s[0].equals("execute_script")) packetsSender.send(clientSocket, commandd);
             }
             catch (Exception e){
                 continue;

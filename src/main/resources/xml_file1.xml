@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<company>
+    <name>IT-Heaven</name>
+    <offices>
+        <office floor="1" room="1">
+            <employees>
+                <player id="334579" name="Mark" coordinateX="1.0" coordinateY="2" enginePower="3" capacity="4" FuelType=""/>
+                <player id="334578" name="Daniil" coordinateX="2.0" coordinateY="2" enginePower="54" capacity="9" FuelType="ALCOHOL"/>
+                <player id="334577" name="asd" coordinateX="1.0" coordinateY="2" enginePower="53" capacity="1" FuelType=""/>
+                <player id="4" name="Vadim" coordinateX="12.0" coordinateY="-8" enginePower="62" capacity="181" FuelType="GASOLINE"/>
+                <player id="334582" name="qwe" coordinateX="1.0" coordinateY="2" enginePower="4" capacity="3" FuelType=""/>
+                <player id="3" name="res" coordinateX="1.0" coordinateY="2" enginePower="45" capacity="6" FuelType=""/>
+                <player id="2" name="wev" coordinateX="7.0" coordinateY="5" enginePower="76" capacity="4" FuelType=""/>
+                <player id="334581" name="Ed" coordinateX="1.0" coordinateY="2" enginePower="4" capacity="3" FuelType=""/>
+                <player id="123" name="Maksim" coordinateX="2.0" coordinateY="5" enginePower="56" capacity="1" FuelType=""/>
+                <player id="334580" name="Mark" coordinateX="9.0" coordinateY="9" enginePower="189" capacity="79" FuelType=""/>
+                <player id="334583" name="Maksim" coordinateX="0.0" coordinateY="0" enginePower="228" capacity="228" FuelType="ALCOHOL"/>
+            </employees>
+        </office>
+    </offices>
+</company>

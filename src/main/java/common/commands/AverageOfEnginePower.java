@@ -27,10 +27,10 @@ public class AverageOfEnginePower implements Command, Serializable {
                 System.out.println(average / number);
                 answer=String.valueOf(average / number);
             } catch (ArithmeticException e) {
-                answer="Коллекция пуста";
+                answer="is empty";
             }
         }
-        else answer="Команда введена некорректно";
+        else answer="Incorrect command";
         ServerAnswer serverAnswer = new ServerAnswer(answer);
         ServerSender serverSender = new ServerSender();
         serverSender.send(serverAnswer);

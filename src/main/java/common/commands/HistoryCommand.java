@@ -17,7 +17,7 @@ public class HistoryCommand implements Command, Serializable {
         if (peremen.equals("")) {
              ArrayList<String> list = s.getHistory();
             for (String history : list) answer+=history+"\n";
-        } else answer="Команда введена некорректно";
+        } else answer="Incorrect command";
         ServerAnswer serverAnswer = new ServerAnswer(answer);
         ServerSender serverSender = new ServerSender();
         serverSender.send(serverAnswer);

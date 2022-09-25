@@ -11,31 +11,31 @@ public class AddParent {
      * @return
      */
     public Float analizeFloat(MyScanner c, String name){
-        System.out.println("Введите значение CoordX");
+        System.out.println("Enter CoordX");
         boolean run=true;
         Float ans=null;
         while (run) {
             try {
                 ans=Float.parseFloat(c.readNextLine());
                 if(ans>-342) run=false;
-                else System.out.println("Введите правильный диапазон");
+                else System.out.println("enter the correct range");
             } catch (NumberFormatException e) {
-                System.out.println("Введите информацию переменной "+ name+ " корректно");
+                System.out.println("enter again");
             }
         }
         return ans;
     }
     public Long analizeLong(MyScanner c, String name){
-        System.out.println("введите значение CoordY");
+        System.out.println("enter CoordY");
         boolean run=true;
         Long ans=null;
         while (run) {
             try {
                 ans=Long.parseLong(c.readNextLine());
                 if (ans<809) run=false;
-                else System.out.println("Введите правильный диапазон");
+                else System.out.println("enter the correct range");
             } catch (NumberFormatException e) {
-                System.out.println("Введите информацию переменной "+ name+ " корректно");
+                System.out.println("Enter again "+ name+ " correct");
             }
         }
         return ans;
@@ -47,9 +47,9 @@ public class AddParent {
             try {
                 ans=Integer.parseInt(c.readNextLine());
                 if (ans>0) run=false;
-                else System.out.println("Введите правильный диапазон");
+                else System.out.println("enter the correct range");
             } catch (NumberFormatException e) {
-                System.out.println("Введите информацию переменной "+ name+ " корректно");
+                System.out.println("Enter again "+ name+ " correct");
 
             }
         }
@@ -60,7 +60,7 @@ public class AddParent {
         boolean run=true;
         while (run) {
             try {
-                System.out.println("Доступные значения: GASOLINE\n" +
+                System.out.println("Enter: GASOLINE\n" +
                         "    ALCOHOL\n" +
                         "    MANPOWER\n" +
                         "    NUCLEAR\n" +
@@ -75,7 +75,7 @@ public class AddParent {
                 run=false;
 
             } catch (IllegalArgumentException e) {
-                System.out.println("Введите информацию переменной "+ name+ " корректно");
+                System.out.println("Enter again "+ name+ " correct");
             }
         }
         return ans;

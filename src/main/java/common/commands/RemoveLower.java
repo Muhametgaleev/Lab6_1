@@ -31,8 +31,8 @@ public class RemoveLower extends AddParent implements Command, Serializable {
                 list.remove(znach);
             }
             s.setCopy(list);
-            answer="Команда выполнена";
-        } else answer="Команда введена некорректно";
+            answer="Success";
+        } else answer="Incorrect command";
 
         ServerAnswer serverAnswer = new ServerAnswer(answer);
         ServerSender serverSender = new ServerSender();

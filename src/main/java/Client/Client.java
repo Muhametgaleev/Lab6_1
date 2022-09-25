@@ -12,6 +12,7 @@ import java.net.*;
 
 public class Client {
     public static void main(String[] args) throws IOException {
+        int isRight=0;
         MyScanner reader = new MyScanner();
         DatagramSocket clientSocket = new DatagramSocket();
         ClientReceiver receiver = new ClientReceiver();
@@ -22,29 +23,31 @@ public class Client {
 
         while (supply.getRunning()){
             try {
-                System.out.println("Введите команду");
+                System.out.println("Enter command");
                 String[] s = reader.readNextLine().split(" ");
                 if (s.length < 3) {
+                    isRight=1;
                     if (s.length == 2) supply.setPeremen(s[1]);
                     Command commandd = command.getCommand(s[0]);
                     commandd.declare(supply);
                     supply.setPeremen("");
                     if (!s[0].equals("execute_script")) packetsSender.send(clientSocket, commandd);
+
+                    try{
+                        if(isRight==1) receiver.receive(clientSocket);
+                    }
+                    catch (SocketTimeoutException e){
+                        System.out.println("Server is not available now.");
+                        break;
+                    }
+
                 }else{
                     System.out.println("Лишние данные");
                 }
             }catch (NullPointerException e){
                 System.out.println("такой команды не существует");
-            }
-            catch (Exception e){
+            } catch (Exception e){
                 continue;
-            }
-            try{
-                receiver.receive(clientSocket);
-            }
-            catch (SocketTimeoutException e){
-                System.out.println("Server is not available now.");
-                break;
             }
 
         }

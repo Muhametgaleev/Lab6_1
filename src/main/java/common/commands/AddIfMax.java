@@ -37,26 +37,26 @@ public class AddIfMax extends AddParent implements Command, Serializable {
                 System.out.println("Элемент успешно добавлен");
                 s.setCopy(list);
             } else {
-                System.out.println("К сожалению, ваш элемент не подходит по значениям");
+                System.out.println("Invalid value");
             }
         }
-        else System.out.println("Команда введена некорректно");
+        else System.out.println("Incorrect command");
     }
     @Override
     public void declare(Supply s){
         MyScanner scanner = new MyScanner();
 
             id = this.findMaxIdFile() + 1;
-            System.out.println("Введите имя");
+            System.out.println("Enter name");
             name = scanner.readNextLine();
 
             coordinates = new Coordinates(analizeFloat(scanner, "cordx"), analizeLong(scanner, "cordy"));
-            System.out.println("Введите значение Capacity");
+            System.out.println("Enter Capacity");
             capacity = analizeInteger(scanner, "capacity");
-            System.out.println("Введите значание Engine power");
+            System.out.println("Enter Engine power");
             enginePower = analizeInteger(scanner, "Engine Power");
             creationDate = LocalDateTime.now();
-            System.out.println("Введите значение FuelType");
+            System.out.println("Enter FuelType");
             type = analizeFuel(scanner, "FuelType");
             peremen=s.getPeremen();
     }

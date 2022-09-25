@@ -24,10 +24,10 @@ public class RemoveAllByEnginePower implements Command, Serializable {
                 list.remove(znach);
             }
             s.setCopy(list);
-            answer="Команда выполнена";
+            answer="Succes";
         }
         catch (NumberFormatException e){
-            answer="К сожалению, данные введены неправильно";
+            answer="Incorrect data of command";
         }finally {
             ServerAnswer serverAnswer = new ServerAnswer(answer);
             ServerSender serverSender = new ServerSender();

@@ -45,11 +45,11 @@ public class SaveCommand implements Command, Serializable {
                         "    </offices>\n" +
                         "</company>");
                 writer1.close();
-                answer="Команда выполнена";
+                answer="Success";
             } catch (IOException e) {
-                answer="Нет файла для сохранения информации";
+                answer="no file for save";
             }
-        } else answer="Команда введена некорректно";
+        } else answer="Incorrect command";
 
         ServerAnswer serverAnswer = new ServerAnswer(answer);
         ServerSender serverSender = new ServerSender();

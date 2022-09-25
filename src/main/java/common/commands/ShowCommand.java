@@ -25,7 +25,7 @@ public class ShowCommand implements Command, Serializable {
             ServerSender serverSender = new ServerSender();
             serverSender.send(serverAnswer);
         } else {
-            ServerAnswer serverAnswer = new ServerAnswer("Команда введена некорректно");
+            ServerAnswer serverAnswer = new ServerAnswer("Incorrect command");
             ServerSender serverSender = new ServerSender();
             serverSender.send(serverAnswer);
         };

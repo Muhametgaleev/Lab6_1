@@ -27,7 +27,7 @@ public class UniqueFuelConsumption implements Command, Serializable {
                 System.out.println(unique_fuel);
                 answer+=String.valueOf(unique_fuel) + "\n";
             }
-        } else answer="Команда введена некорректно";
+        } else answer="Incorrect command";
         ServerAnswer serverAnswer = new ServerAnswer(answer);
         ServerSender serverSender = new ServerSender();
         serverSender.send(serverAnswer);

@@ -9,7 +9,7 @@ public class CommandManager {
     public static HashMap<String, Command> commandColl = new HashMap<>();
 
 
-    public CommandManager() {
+    public CommandManager(){
         commandColl.put("add",new AddCommand());
         commandColl.put("average_of_engine_power",new AverageOfEnginePower());
         commandColl.put("clear",new Clear());
@@ -22,12 +22,12 @@ public class CommandManager {
         commandColl.put("remove_by_id",new RemoveById());
         commandColl.put("remove_lower",new RemoveLower());
         commandColl.put("remove_all_by_engine_power",new RemoveAllByEnginePower());
-        commandColl.put("save",new SaveCommand());
+//        commandColl.put("save",new SaveCommand());
         commandColl.put("show",new ShowCommand());
         commandColl.put("print_unique_fuel_consumption",new UniqueFuelConsumption());
         commandColl.put("update",new UpdateCommand());
     }
-    public Command getCommand(String s){
+    public Command getCommand(String s) throws NullPointerException{
         return commandColl.get(s);
     }
 }

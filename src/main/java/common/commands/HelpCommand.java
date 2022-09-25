@@ -34,8 +34,8 @@ public class HelpCommand implements Command, Serializable {
              serverSender.send(serverAnswer);
          }
          else {
-             System.out.println("Команда введена некорректно");
-             ServerAnswer serverAnswer = new ServerAnswer("Команда введена некорректно");
+             System.out.println("Incorrect command");
+             ServerAnswer serverAnswer = new ServerAnswer("Incorrect command");
              ServerSender serverSender = new ServerSender();
              serverSender.send(serverAnswer);
          }

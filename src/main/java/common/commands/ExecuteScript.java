@@ -47,7 +47,7 @@ public class ExecuteScript implements Command {
                         packetsSender.send(clientSocket, commandd);
                     } catch (NullPointerException e) {
 
-                        System.out.println("такой команды не существует");
+                        System.out.println("there is no command");
                     } catch (IOException e) {
 //                        e.printStackTrace();
                     }
@@ -59,10 +59,10 @@ public class ExecuteScript implements Command {
                     }
                 }
             } catch (FileNotFoundException e) {
-                System.out.println("Введите название файла корректно");
+                System.out.println("Enter correct name of file");
             }
         } else {
-            System.out.println("Команда введена не корректно");
+            System.out.println("Incorrect command");
         }
     }
 

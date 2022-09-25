@@ -13,8 +13,8 @@ public class Info implements Command, Serializable {
     @Override
     public void execute(Supply s) {
         if (peremen.equals(""))
-            answer="Количество элементов в коллекции на данный момент " + s.getSize() + " Остальные данные " + s.toString() + " " + s.hashCode();
-        else answer="Команда введена некорректно";
+            answer="info about size " + s.getSize() + " other info " + s.toString() + " " + s.hashCode();
+        else answer="Incorrect command";
         ServerAnswer serverAnswer = new ServerAnswer(answer);
         ServerSender serverSender = new ServerSender();
         serverSender.send(serverAnswer);

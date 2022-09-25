@@ -18,9 +18,9 @@ public class Clear implements Command, Serializable {
         if (peremen.equals("")) {
             list = new ArrayList<Vehicle>();
             s.setCopy(list);
-            answer="Команда выполнена";
+            answer="Succes";
 
-        } else answer="Команда введена некорректно";
+        } else answer="Incorrect command";
         ServerAnswer serverAnswer = new ServerAnswer(answer);
         ServerSender serverSender = new ServerSender();
         serverSender.send(serverAnswer);
